@@ -13,7 +13,6 @@ require (
 	github.com/golibs-starter/golib-gin v1.0.0
 	github.com/golibs-starter/golib-security v1.0.0
 	github.com/golibs-starter/golib-test v1.0.0
-	gitlab.com/golibs-starter/golib-cron v0.6.0
 	go.uber.org/fx v1.23.0
 )
 
@@ -77,7 +76,6 @@ require (
 	github.com/twitchyliquid64/golang-asm v0.15.1 // indirect
 	github.com/ugorji/go/codec v1.2.12 // indirect
 	github.com/zenthangplus/defaults v1.6.2-beta // indirect
-	gitlab.com/golibs-starter/golib v0.12.4 // indirect
 	go.uber.org/dig v1.18.0 // indirect
 	go.uber.org/multierr v1.10.0 // indirect
 	go.uber.org/zap v1.26.0 // indirect

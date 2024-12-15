@@ -5,7 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6bd900aa-01eb-46d3-ae57-05c36e4c5c40" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/genomic-service/config/local.example.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/genomic-service/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/genomic-service/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/genomic-service/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/genomic-service/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/genomic-service/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/genomic-service/go.sum" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +63,7 @@
     "git-widget-placeholder": "master",
     "go.import.settings.migrated": "true",
     "go.sdk.automatically.set": "true",
-    "last_opened_file_path": "/Users/ngocduongminh/Projects/genomic-system/genomic-service/config",
+    "last_opened_file_path": "/Users/ngocduongminh/Projects/genomic-system/genomic-service/tests",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "nodejs_package_manager_path": "npm"
@@ -68,11 +71,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/genomic-service/tests" />
       <recent name="$PROJECT_DIR$/genomic-service/config" />
       <recent name="$PROJECT_DIR$/genomic-service/bootstrap" />
       <recent name="$PROJECT_DIR$/genomic-service/adapters/tee" />
       <recent name="$PROJECT_DIR$/genomic-service/jobs" />
-      <recent name="$PROJECT_DIR$/genomic-service/utils" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/genomic-service/config" />
