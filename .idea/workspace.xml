@@ -4,26 +4,7 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6bd900aa-01eb-46d3-ae57-05c36e4c5c40" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/genomic-service/config/local.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/genomic-service/models/requests/mock_encrypt_data_request.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/integration_test.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/genomic-service/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/DOCUMENT.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/genomic-service/adapters/blockchain/blockchain_service.go" beforeDir="false" afterPath="$PROJECT_DIR$/genomic-service/adapters/blockchain/blockchain_service.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/genomic-service/adapters/tee/tee_services.go" beforeDir="false" afterPath="$PROJECT_DIR$/genomic-service/adapters/tee/tee_services.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/genomic-service/bootstrap/all.go" beforeDir="false" afterPath="$PROJECT_DIR$/genomic-service/bootstrap/all.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/genomic-service/config/local.example.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/genomic-service/controllers/user_controller.go" beforeDir="false" afterPath="$PROJECT_DIR$/genomic-service/controllers/user_controller.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/genomic-service/jobs/filter_logs_job.go" beforeDir="false" afterPath="$PROJECT_DIR$/genomic-service/jobs/filter_logs_job.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/genomic-service/models/genetic_data.go" beforeDir="false" afterPath="$PROJECT_DIR$/genomic-service/models/genetic_data.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/genomic-service/models/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/genomic-service/models/user.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/genomic-service/routers/router.go" beforeDir="false" afterPath="$PROJECT_DIR$/genomic-service/routers/router.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/genomicdao/contracts/Controller.sol" beforeDir="false" afterPath="$PROJECT_DIR$/genomicdao/contracts/Controller.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/genomicdao/contracts/Token.sol" beforeDir="false" afterPath="$PROJECT_DIR$/genomicdao/contracts/Token.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/genomicdao/hardhat.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/genomicdao/hardhat.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/genomicdao/scripts/deployments/deployments.json" beforeDir="false" afterPath="$PROJECT_DIR$/genomicdao/scripts/deployments/deployments.json" afterDir="false" />
-    </list>
+    <list default="true" id="6bd900aa-01eb-46d3-ae57-05c36e4c5c40" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -77,7 +58,7 @@
     "git-widget-placeholder": "master",
     "go.import.settings.migrated": "true",
     "go.sdk.automatically.set": "true",
-    "last_opened_file_path": "/Users/ngocduongminh/Projects/genomic-system/genomic-service/models/requests",
+    "last_opened_file_path": "/Users/ngocduongminh/Projects/genomic-system",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "nodejs_package_manager_path": "npm"
@@ -85,17 +66,18 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/genomic-service/models/requests" />
       <recent name="$PROJECT_DIR$/genomic-service/tests" />
       <recent name="$PROJECT_DIR$/genomic-service/config" />
       <recent name="$PROJECT_DIR$/genomic-service/bootstrap" />
-      <recent name="$PROJECT_DIR$/genomic-service/adapters/tee" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/images" />
+      <recent name="$PROJECT_DIR$/genomic-service" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/genomic-service/config" />
       <recent name="$PROJECT_DIR$/genomic-service/properties" />
-      <recent name="$PROJECT_DIR$/genomic-service/cmd" />
     </key>
   </component>
   <component name="RunManager" selected="Go Build.go build github.com/minhngoc274/genomic-system/genomic-service">
