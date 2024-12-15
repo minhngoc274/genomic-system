@@ -64,7 +64,7 @@ sequenceDiagram
 
 - [chain_properties.go](genomic-service/config/chain_properties.go): Defines blockchain configuration properties.
 - [default.yml](genomic-service/config/default.yml): Default application configuration.
-- [local.example.yml](genomic-service/config/local.example.yml): Example configuration for local development.
+- [local.yml](genomic-service/config/local.yml): Configuration for local development.
 
 ### 4. Controllers
 
