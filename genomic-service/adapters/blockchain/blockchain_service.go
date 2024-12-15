@@ -74,7 +74,7 @@ func (s *BlockchainService) UploadData(docID string) error {
 
 	tx, err := s.controller.UploadData(opts, docID)
 	if err != nil {
-		return fmt.Errorf("failed to initiate upload: %v", err)
+		return fmt.Errorf("failed to upload data: %v", err)
 	}
 
 	_, err = bind.WaitMined(context.Background(), s.client, tx)
@@ -82,7 +82,7 @@ func (s *BlockchainService) UploadData(docID string) error {
 		return fmt.Errorf("failed to wait for transaction: %v", err)
 	}
 
-	return fmt.Errorf("failed to get session ID from event")
+	return nil
 }
 
 // Confirm confirm session data and reward for user

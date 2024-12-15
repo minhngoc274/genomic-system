@@ -21,12 +21,10 @@ func All() fx.Option {
 		golib.AppOpt(),
 		golib.PropertiesOpt(),
 		golib.LoggingOpt(),
-		//golib.EventOpt(),
+		golib.EventOpt(),
 		golib.BuildInfoOpt(Version, CommitHash, BuildTime),
 		golib.ActuatorEndpointOpt(),
 		golibgin.GinHttpServerOpt(),
-		//golibdata.DatasourceOpt(),
-		//golibdata.RedisOpt(),
 		fx.Invoke(routers.RegisterHandlers),
 		fx.Invoke(routers.RegisterGinRouters),
 		golibcron.Opt(),
@@ -48,7 +46,7 @@ func All() fx.Option {
 
 		// Graceful shutdown.
 		// OnStop hooks will run in reverse order.
-		//golib.OnStopEventOpt(),
+		golib.OnStopEventOpt(),
 		golibgin.OnStopHttpServerOpt(),
 	)
 }

@@ -44,7 +44,7 @@ contract Controller {
     function uploadData(string memory docId) public returns (uint256) {
         // TODO: Implement this method: to start an uploading gene data session. The doc id is used to identify a unique gene profile. Also should check if the doc id has been submited to the system before. This method return the session id
         require(bytes(docId).length > 0, "Document ID cannot be empty");
-        require(!docSubmits[docId], "Document ID has already been submitted");
+        require(!docSubmits[docId], "Doc already been submitted");
 
         uint256 sessionId = _sessionIdCounter.current();
         _sessionIdCounter.increment();
@@ -73,12 +73,12 @@ contract Controller {
         // TODO: Implement this method: The proof here is used to verify that the result is returned from a valid computation on the gene data. For simplicity, we will skip the proof verification in this implementation. The gene data's owner will receive a NFT as a ownership certicate for his/her gene profile.
 
         // TODO: Verify proof, we can skip this step
+        DataDoc storage currentDoc = docs[docId];
+        require(bytes(currentDoc.id).length == 0, "Doc already been submitted");
+
         UploadSession storage currentSession = sessions[sessionId];
         require(currentSession.user == msg.sender, "Invalid session owner");
-        require(!currentSession.confirmed, "Session is already confirmed");
-
-        DataDoc storage currentDoc = docs[docId];
-        require(bytes(currentDoc.id).length == 0, "Document already exists");
+        require(!currentSession.confirmed, "Session is ended");
 
         // Update doc content
         currentDoc.id = docId;
@@ -86,6 +86,7 @@ contract Controller {
 
         // Close session
         currentSession.confirmed = true;
+        currentSession.proof = 'success';
 
         // Mint NFT and reward token
         uint256 tokenId = geneNFT.safeMint(msg.sender);

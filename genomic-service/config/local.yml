@@ -1,0 +1,15 @@
+app:
+  logging:
+    logLevel: ERROR
+
+  chains:
+    rpc: http://127.0.0.1:9650/ext/bc/2bGAh54yzGQ3nj4txNDDSzoKZTNfghang9z92Cgz315ch1nAsA/rpc
+    chainId: 9999
+    controllerAddress: 0xA4cD3b0Eb6E5Ab5d8CE4065BcCD70040ADAB1F00
+    tokenAddress: 0x4Ac1d98D9cEF99EC6546dEd4Bd550b0b287aaD6D
+    nftAddress: 0x5DB9A7629912EBF95876228C24A848de0bfB43A9
+    privateKey: 56289e99c94b6912bfc12adc093c9b51124f0dc54ac7a766b2bc5ccf558d8027
+  cron:
+    jobs:
+      - name: FilterLogsJob
+        spec: "@every 3s"

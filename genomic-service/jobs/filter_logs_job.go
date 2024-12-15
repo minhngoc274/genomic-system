@@ -2,7 +2,6 @@ package jobs
 
 import (
 	"context"
-	"fmt"
 	"github.com/ethereum/go-ethereum"
 	"github.com/ethereum/go-ethereum/accounts/abi"
 	"github.com/ethereum/go-ethereum/common"
@@ -37,6 +36,7 @@ type FilterLogsJob struct {
 	geneticDataRepository *repositories.GeneticDataRepository
 	blockchainService     *blockchain.BlockchainService
 	teeService            *tee.TEEService
+	latestScannedBlock    *big.Int
 }
 
 // NewFilterLogsJob ...
@@ -56,6 +56,11 @@ func NewFilterLogsJob(
 		log.Fatalf("Failed to connect to blockchain: %v", err)
 	}
 
+	blockNumber, err := client.BlockNumber(context.Background())
+	if err != nil {
+		log.Errorf("[FilterLogsJob] Failed to fetch latest block number: %v", err)
+	}
+
 	return &FilterLogsJob{
 		props:                 props,
 		client:                client,
@@ -63,31 +68,29 @@ func NewFilterLogsJob(
 		geneticDataRepository: geneticDataRepository,
 		blockchainService:     blockchainService,
 		teeService:            teeService,
+		latestScannedBlock:    big.NewInt(int64(blockNumber)),
 	}
 }
 
 // Run job handler
 func (j *FilterLogsJob) Run(ctx context.Context) {
 	log.Infof("[FilterLogsJob] job start")
-
-	if err := j.fetchAndProcessLogs(ctx); err != nil {
+	blockNumber, err := j.client.BlockNumber(ctx)
+	if err != nil {
+		log.Errorf("[FilterLogsJob] Failed to fetch latest block number: %v", err)
+	}
+	if err := j.fetchAndProcessLogs(ctx, blockNumber); err != nil {
 		log.Errorf("[FilterLogsJob] Error processing logs %v", err)
 	}
-
+	j.latestScannedBlock = big.NewInt(int64(blockNumber))
 	log.Info("[FilterLogsJob] job stop")
 }
 
 // fetchAndProcessLogs fetches logs for the given block and processes UploadData events
-func (j *FilterLogsJob) fetchAndProcessLogs(ctx context.Context) error {
-	blockNumber, err := j.client.BlockNumber(ctx)
-	if err != nil {
-		return fmt.Errorf("[FilterLogsJob] Failed to fetch latest block number: %v", err)
-	}
-
-	log.Infof("[FilterLogsJob] start filter from block %d to block %d", blockNumber-20, blockNumber)
-	fromBlock := big.NewInt(int64(blockNumber - 20))
+func (j *FilterLogsJob) fetchAndProcessLogs(ctx context.Context, blockNumber uint64) error {
+	log.Infof("[FilterLogsJob] start filter from block %d to block %d", j.latestScannedBlock, blockNumber)
 	query := ethereum.FilterQuery{
-		FromBlock: fromBlock,
+		FromBlock: j.latestScannedBlock,
 		ToBlock:   big.NewInt(int64(blockNumber)),
 		Addresses: []common.Address{common.HexToAddress(j.props.ControllerAddress)},
 	}
@@ -132,7 +135,8 @@ func (j *FilterLogsJob) fetchAndProcessLogs(ctx context.Context) error {
 func (j *FilterLogsJob) processEvent(ctx context.Context, docID string, sessionID *big.Int) error {
 	geneticData, exists := j.geneticDataRepository.Retrieve(docID)
 	if !exists {
-		return fmt.Errorf("no genetic data found for DocID=%s", docID)
+		log.Warnf("no genetic data found for DocID=%s", docID)
+		return nil
 	}
 
 	if geneticData.IsConfirmed == true {

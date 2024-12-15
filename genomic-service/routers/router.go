@@ -32,6 +32,10 @@ func RegisterGinRouters(p RegisterRoutersIn) {
 	group.GET("/actuator/health", gin.WrapF(p.Actuator.Health))
 	group.GET("/actuator/info", gin.WrapF(p.Actuator.Info))
 
+	group.GET("v1/genetic-data/:id", p.UserController.RetrieveData)
 	group.POST("v1/users", p.UserController.Register)
 	group.POST("v1/users/upload", p.UserController.UploadData)
+
+	group.POST("v1/tee/encrypt", p.UserController.MockEncryptData)
+
 }

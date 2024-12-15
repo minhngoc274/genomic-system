@@ -2,7 +2,9 @@ package tee
 
 import (
 	"crypto/ecdsa"
+	"crypto/rand"
 	"encoding/hex"
+	"fmt"
 	"github.com/ethereum/go-ethereum/crypto"
 	"github.com/ethereum/go-ethereum/crypto/ecies"
 	"strings"
@@ -51,4 +53,32 @@ func (t *TEEService) ProcessEncryptedData(encryptedData []byte) (int64, error) {
 	default:
 		return 0, nil
 	}
+}
+
+func (t *TEEService) EncryptGeneData(data []byte, publicKey string) ([]byte, error) {
+	pubKeyBytes, err := hex.DecodeString(publicKey)
+	if err != nil {
+		return nil, fmt.Errorf("failed to decode public key hex: %v", err)
+	}
+
+	pubKey, err := crypto.DecompressPubkey(pubKeyBytes)
+	if err != nil {
+		return nil, fmt.Errorf("failed to decompress public key: %v", err)
+	}
+
+	eciesPubKey := ecies.ImportECDSAPublic(pubKey)
+
+	encrypted, err := ecies.Encrypt(
+		rand.Reader,
+		eciesPubKey,
+		data,
+		nil,
+		nil,
+	)
+
+	if err != nil {
+		return nil, fmt.Errorf("failed to encrypt data: %v", err)
+	}
+
+	return encrypted, nil
 }
