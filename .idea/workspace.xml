@@ -7,8 +7,6 @@
     <list default="true" id="6bd900aa-01eb-46d3-ae57-05c36e4c5c40" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/genomic-service/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/genomic-service/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/genomic-service/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/genomic-service/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/genomic-service/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/genomic-service/go.sum" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

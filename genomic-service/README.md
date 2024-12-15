@@ -24,8 +24,6 @@ sequenceDiagram
     DO ->> GW: 2. POST /api/v1/upload (encrypted data)
     GW ->> RP: 2.1 Store encrypted data
     GW ->> BC: 2.2 Create session on blockchain
-    BC -->> GW: Return fileHash & sessionId
-    GW -->> DO: Return fileHash & sessionId
 
     %% Step 3: Event Processing
     Note over WK: Worker listens for blockchain events
