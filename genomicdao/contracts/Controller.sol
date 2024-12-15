@@ -43,6 +43,24 @@ contract Controller {
 
     function uploadData(string memory docId) public returns (uint256) {
         // TODO: Implement this method: to start an uploading gene data session. The doc id is used to identify a unique gene profile. Also should check if the doc id has been submited to the system before. This method return the session id
+        require(bytes(docId).length > 0, "Document ID cannot be empty");
+        require(!docSubmits[docId], "Document ID has already been submitted");
+
+        uint256 sessionId = _sessionIdCounter.current();
+        _sessionIdCounter.increment();
+
+        sessions[sessionId] = UploadSession({
+            id: sessionId,
+            user: msg.sender,
+            proof: "",
+            confirmed: false
+        });
+
+        docSubmits[docId] = true;
+
+        emit UploadData(docId, sessionId);
+
+        return sessionId;
     }
 
     function confirm(
@@ -55,14 +73,24 @@ contract Controller {
         // TODO: Implement this method: The proof here is used to verify that the result is returned from a valid computation on the gene data. For simplicity, we will skip the proof verification in this implementation. The gene data's owner will receive a NFT as a ownership certicate for his/her gene profile.
 
         // TODO: Verify proof, we can skip this step
+        UploadSession storage currentSession = sessions[sessionId];
+        require(currentSession.user == msg.sender, "Invalid session owner");
+        require(!currentSession.confirmed, "Session is already confirmed");
 
-        // TODO: Update doc content
+        DataDoc storage currentDoc = docs[docId];
+        require(bytes(currentDoc.id).length == 0, "Document already exists");
 
-        // TODO: Mint NFT 
+        // Update doc content
+        currentDoc.id = docId;
+        currentDoc.hashContent = contentHash;
 
-        // TODO: Reward PCSP token based on risk stroke
+        // Close session
+        currentSession.confirmed = true;
 
-        // TODO: Close session
+        // Mint NFT and reward token
+        uint256 tokenId = geneNFT.safeMint(msg.sender);
+        nftDocs[tokenId] = docId;
+        pcspToken.reward(msg.sender, riskScore);
     }
 
     function getSession(uint256 sessionId) public view returns(UploadSession memory) {
